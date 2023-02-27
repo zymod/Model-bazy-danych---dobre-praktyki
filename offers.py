@@ -23,7 +23,6 @@ class OffersDatabase(object):
     def close(self):
         self.conn.close()
 
-
     def create_table(self):
         query = """
             CREATE TABLE IF NOT EXISTS offers(
@@ -37,17 +36,6 @@ class OffersDatabase(object):
         except sqlite3.DatabaseError as e:
             print("Wystąpił błąd przy tworzeniu tabeli: ", e)
         
-
-        try:
-            self.cursor.execute(f"""
-            CREATE TABLE IF NOT EXISTS offers(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                offer_id TEXT
-                )
-            """)
-        except sqlite3.Error as error:
-            print("error occurred: ", error)
-
 
     def insert_offer(self, offer_id):
         query = "INSERT INTO offers (offer_id) VALUES(?)"
